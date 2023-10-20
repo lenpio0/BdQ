@@ -8,44 +8,60 @@
     <script src="scripts.js" defer></script>
     <style>
         @font-face {
-            font-family: "font";
+            font-family: "traditionell";
             src: url("TraditionellSans.ttf");
         }
+        @font-face {
+            font-family: "roboto";
+            src: url("RobotoCondensed-Bold.ttf");
+        }
+        @font-face {
+            font-family: "carrois";
+            src: url("CarroisGothic-Regular.ttf");
+        }
         body {
-            font-family: 'font';
+            font-family: 'traditionell';
+        }
+        h2 {
+            font-family: 'roboto';
+        }
+        nav {
+            font-family: 'carrois';
         }
     </style>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 </head>
 <body>
+    <span id="back-top" class="hidden fixed z-50 text-2xl text-white p-2 bg-black/75 w-12 h-12 m-auto text-center bottom-4 right-4 lg:right-8 xl:bottom-6 xl:right-12 cursor-pointer hover:text-[#f69033] hover:bg-[#000000cc] [transition:all_300ms;]">⮝</span>
     <div class="w-screen">
         <div class="flex">
             <div id="brg-menu" class="w-0 transition-[height] transition-[width] duration-200 ease-in-out bg-black flex-none">
                 <div id="inside-menu" class="w-[90%] h-[calc(100vh-1.6rem)] bg-white transition-[height] transition-[width] duration-200 ease-in-out top-[0.8rem] left-[0.8rem]">
                     <nav class="flex items-center h-full">
                         <ul id="sidebar" class="flex flex-col h-4/5 w-full justify-evenly items-center">
-                            <li class="text-center hover:[text-decoration-color:rgba(16,26,27,1)] [text-decoration:underline_rgba(16,26,27,0)] [transition:text-decoration-color_300ms;] cursor-pointer"><a href="#qui-sommes-nous">Qui sommes-nous</a></li>
-                            <li class="text-center hover:[text-decoration-color:rgba(16,26,27,1)] [text-decoration:underline_rgba(16,26,27,0)] [transition:text-decoration-color_300ms;] cursor-pointer"><a href="#notre-philosophie">Notre philosophie</a></li>
-                            <li class="text-center hover:[text-decoration-color:rgba(16,26,27,1)] [text-decoration:underline_rgba(16,26,27,0)] [transition:text-decoration-color_300ms;] cursor-pointer"><a href="#nos-bieres">Nos bières</a></li>
-                            <li class="text-center hover:[text-decoration-color:rgba(16,26,27,1)] [text-decoration:underline_rgba(16,26,27,0)] [transition:text-decoration-color_300ms;] cursor-pointer"><a href="#points-de-vente">Points de vente</a></li>
-                            <li class="text-center hover:[text-decoration-color:rgba(16,26,27,1)] [text-decoration:underline_rgba(16,26,27,0)] [transition:text-decoration-color_300ms;] cursor-pointer"><a href="#tireuse">Tireuse</a></li>
-                            <li class="text-center hover:[text-decoration-color:rgba(16,26,27,1)] [text-decoration:underline_rgba(16,26,27,0)] [transition:text-decoration-color_300ms;] cursor-pointer"><a href="#contact">Contact</a></li>
+                            <li class="text-center hover:text-[#f69033] [transition:all_300ms;] cursor-pointer"><a href="#qui-sommes-nous">Qui sommes-nous</a></li>
+                            <li class="text-center hover:text-[#f69033] [transition:all_300ms;] cursor-pointer"><a href="#notre-philosophie">Notre philosophie</a></li>
+                            <li class="text-center hover:text-[#f69033] [transition:all_300ms;] cursor-pointer"><a href="#nos-bieres">Nos bières</a></li>
+                            <li class="text-center hover:text-[#f69033] [transition:all_300ms;] cursor-pointer"><a href="#points-de-vente">Points de vente</a></li>
+                            <li class="text-center hover:text-[#f69033] [transition:all_300ms;] cursor-pointer"><a href="#tireuse">Tireuse</a></li>
+                            <li class="text-center hover:text-[#f69033] [transition:all_300ms;] cursor-pointer"><a href="#contact">Contact</a></li>
                         </ul>
                 </div>
             </div>
             <div class="w-screen overflow-hidden transition-[height] transition-[width] duration-200 ease-in-out">
-                <div class="flex justify-around fixed w-full bg-white z-30">
-                    <img id="menu-btn" src="https://placehold.co/40x40?text=menu" class="lg:hidden">
+                <div class="flex justify-around items-center fixed w-full bg-white z-30 drop-shadow-lg">
+                    <img id="menu-btn" src="burger-menu.svg" class="lg:hidden w-[40px] h-[40px]">
                     <img src="logo.png" class="h-20 lg:h-24">
                     <nav class="hidden lg:flex">
                         <ul class="flex items-center">
-                            <li class="px-4 xl:text-lg hover:[text-decoration-color:rgba(16,26,27,1)] [text-decoration:underline_rgba(16,26,27,0)] [transition:text-decoration-color_300ms;] cursor-pointer"><a href="#qui-sommes-nous" class="text-center">Qui sommes-nous</a></li>
-                            <li class="px-4 xl:text-lg hover:[text-decoration-color:rgba(16,26,27,1)] [text-decoration:underline_rgba(16,26,27,0)] [transition:text-decoration-color_300ms;] cursor-pointer"><a href="#notre-philosophie">Notre philosophie</a></li>
-                            <li class="px-4 xl:text-lg hover:[text-decoration-color:rgba(16,26,27,1)] [text-decoration:underline_rgba(16,26,27,0)] [transition:text-decoration-color_300ms;] cursor-pointer"><a href="#nos-bieres">Nos bières</a></li>
-                            <li class="px-4 xl:text-lg hover:[text-decoration-color:rgba(16,26,27,1)] [text-decoration:underline_rgba(16,26,27,0)] [transition:text-decoration-color_300ms;] cursor-pointer"><a href="#points-de-vente">Points de vente</a></li>
-                            <li class="px-4 xl:text-lg hover:[text-decoration-color:rgba(16,26,27,1)] [text-decoration:underline_rgba(16,26,27,0)] [transition:text-decoration-color_300ms;] cursor-pointer"><a href="#tireuse">Tireuse</a></li>
-                            <li class="px-4 xl:text-lg hover:[text-decoration-color:rgba(16,26,27,1)] [text-decoration:underline_rgba(16,26,27,0)] [transition:text-decoration-color_300ms;] cursor-pointer"><a href="#contact">Contact</a></li>
+                            <li class="px-4 xl:text-lg hover:text-[#f69033] [transition:all_300ms;] cursor-pointer"><a href="#qui-sommes-nous" class="text-center">Qui sommes-nous</a></li>
+                            <li class="px-4 xl:text-lg hover:text-[#f69033] [transition:all_300ms;] cursor-pointer"><a href="#notre-philosophie">Notre philosophie</a></li>
+                            <li class="px-4 xl:text-lg hover:text-[#f69033] [transition:all_300ms;] cursor-pointer"><a href="#nos-bieres">Nos bières</a></li>
+                            <li class="px-4 xl:text-lg hover:text-[#f69033] [transition:all_300ms;] cursor-pointer"><a href="#points-de-vente">Points de vente</a></li>
+                            <li class="px-4 xl:text-lg hover:text-[#f69033] [transition:all_300ms;] cursor-pointer"><a href="#tireuse">Tireuse</a></li>
+                            <li class="px-4 xl:text-lg hover:text-[#f69033] [transition:all_300ms;] cursor-pointer"><a href="#contact">Contact</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -53,60 +69,82 @@
 
                 </div>
                 <section id="qui-sommes-nous" class="flex flex-wrap pt-8 justify-center w-screen">
-                    <div class="w-4/5 mx-4">
+                    <div class="w-4/5 mx-4 2xl:w-full">
                         <h2 class="w-full text-4xl uppercase text-center">Qui sommes-nous ?</h2>
-                        <p class="text-xl pt-12 pb-8 max-w-[500px] mx-auto">Les Brasseries du Quint et Balma sont nées de la rencontre de deux brasseurs amateurs, Aurélien,
+                        <p class="text-xl pt-12 pb-16 max-w-[500px] mx-auto font-[carrois]" data-aos="fade-right" data-aos-duration="1000">Les Brasseries du Quint et Balma sont nées de la rencontre de deux brasseurs amateurs, Aurélien,
                         fromager diplômé en agro-alimentaire, et Damien technicien issu d’un cursus énergétique. Nous
                         avons uni notre expérience et notre sensibilité commune pour le made in France biologique et bas
                         carbone afin de créer deux bières à notre image.</p>
                     </div>
-                    <img src="https://placehold.co/400x400" class="sm:mb-8 lg:mb-16">
+                    <img src="https://placehold.co/400x400" class="sm:mb-16 lg:mb-24" data-aos="fade-up" data-aos-duration="1000">
                 </section>
 
                 <section id="notre-philosophie" class="bg-[#101a1b] py-16 lg:py-24 xl:py-32 flex flex-wrap justify-center w-screen">
-                    <h2 class="w-full text-4xl text-white uppercase text-center pb-8 mx-4">Notre philosophie</h2>
-                    <div class="pb-8 w-4/5 mx-4 max-w-[900px]">
-                        <p class="text-white text-xl pb-8">100% Français, 100% Biologique, 200% passionnés.
-                        Nous avons à cœur d’inscrire notre démarche dans la logique du développement durable.</p>
-                        <p class="text-white text-xl">Nos objectifs sont :</p>
-                        <ul>
-                            <li class="text-white text-xl">développer une dynamique économique locale et solidaire,</li>
-                            <li class="text-white text-xl">maîtriser l’empreinte carbone à chaque étape de la vie du produit.</li>
-                        </ul>
+                    <div class="pb-8 mx-4 w-full">
+                        <span class="bg-[#f69033] w-[400px] h-[5px] mx-auto relative block"></span>
+                        <h2 class="text-4xl text-white uppercase text-center">Notre philosophie</h2>
+                        <span class="bg-[#f69033] w-[400px] h-[5px] mx-auto relative block"></span>
                     </div>
-                    <div class="w-4/5 mx-4 max-w-[900px]">
-                        <p class="text-white text-xl">Points forts :</p>
-                        <ul class="list-disc list-inside">
-                            <li class="text-white text-xl">Étiquetage des bouteilles réalisées par des personnes en situation de handicap, travailleurs à
+                    <div class="pb-8 w-4/5 mx-4 max-w-[900px]">
+                        <p class="text-white text-xl pb-8 font-[carrois] text-center pt-8" data-aos="fade-right" data-aos-duration="1000">100% Français, 100% Biologique, 200% passionnés.
+                        Nous avons à cœur d’inscrire notre démarche dans la logique du développement durable.</p>
+                        <img src="bieretable.jpg" class="w-full max-w-[500px] mx-auto" data-aos="fade-up" data-aos-duration="1000">
+                        <div data-aos="fade-in" data-aos-duration="1000">
+                            <p class="text-white text-xl font-[carrois] pt-8 pb-2">Nos objectifs sont :</p>
+                            <ul class="list-disc list-inside marker:text-[#f69033]">
+                                <li class="text-white text-xl leading-8">développer une dynamique économique locale et solidaire</li>
+                                <li class="text-white text-xl leading-8">maîtriser l’empreinte carbone à chaque étape de la vie du produit</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="w-full flex">
+                        <span class="bg-[#f69033] w-1/4 xl:w-1/5 h-[1px] mx-auto relative top-[50%] left-[5%] sm:left-[8%] md:left-[10%] xl:left-[12%] block" data-aos="fade-right" data-aos-duration="1000"></span>
+                        <img src="beer-yellow.svg" class="h-4 w-4" data-aos="fade-in" data-aos-duration="1000" data-aos-delay="200">
+                        <span class="bg-[#f69033] w-1/4 xl:w-1/5 h-[1px] mx-auto relative top-[50%] right-[5%] sm:right-[8%] md:right-[10%] xl:right-[12%] block" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="400"></span>
+                    </div>
+                    <div class="w-4/5 mx-4 max-w-[900px]" data-aos="fade-in" data-aos-duration="1000">
+                        <p class="text-white text-xl font-[carrois] pt-8 pb-2">Points forts :</p>
+                        <ul class="list-disc list-inside marker:text-[#f69033]">
+                            <li class="text-white text-xl leading-8">Étiquetage des bouteilles réalisées par des personnes en situation de handicap, travailleurs à
                             l’ESAT de Baume-les-Dames</li>
-                            <li class="text-white text-xl">100 % des matières premières sont biologiques et françaises</li>
-                            <li class="text-white text-xl">Taille des étiquettes réduite</li>
-                            <li class="text-white text-xl">Supervision des consommations en énergie afin de maîtriser les dérives possibles</li>
-                            <li class="text-white text-xl">Réemploi d’une ancienne cuve industrielle en fermenteur</li>
-                            <li class="text-white text-xl">Création d’une cuve d’ébullition réalisée avec le réemploi d’une ancienne cuve industrielle
+                            <li class="text-white text-xl leading-8">100 % des matières premières sont biologiques et françaises</li>
+                            <li class="text-white text-xl leading-8">Taille des étiquettes réduite</li>
+                            <li class="text-white text-xl leading-8">Supervision des consommations en énergie afin de maîtriser les dérives possibles</li>
+                            <li class="text-white text-xl leading-8">Réemploi d’une ancienne cuve industrielle en fermenteur</li>
+                            <li class="text-white text-xl leading-8">Création d’une cuve d’ébullition réalisée avec le réemploi d’une ancienne cuve industrielle
                             (augmentation du rendement de chauffe de + 50%)</li>
-                            <li class="text-white text-xl">Utilisation d’une NEP (nettoyage en place) afin de réutiliser les lessives de nettoyage</li>
-                            <li class="text-white text-xl">Chambre froide réalisée en panneaux 100 % issus de la déconstruction industrielle</li>
+                            <li class="text-white text-xl leading-8">Utilisation d’une NEP (nettoyage en place) afin de réutiliser les lessives de nettoyage</li>
+                            <li class="text-white text-xl leading-8">Chambre froide réalisée en panneaux 100 % issus de la déconstruction industrielle</li>
                         </ul>
                     </div>
                 </section>
 
                 <section id="nos-bieres" class="py-16 lg:py-24 xl:py-32 flex flex-wrap justify-center w-screen">
-                    <h2 class="text-4xl uppercase pb-8 w-full text-center mx-4">Nos bières</h2>
-                    <div class="flex items-center justify-between lg:justify-center w-4/5 mx-4">
+                    
+                    <div class="pb-16 lg:pb-24 w-full mx-4">
+                        <span class="bg-[#00896b] w-[400px] h-[5px] mx-auto relative block"></span>
+                        <h2 class="text-4xl uppercase text-center">Nos bières</h2>
+                        <span class="bg-[#00896b] w-[400px] h-[5px] mx-auto relative block"></span>
+                    </div>
+                    <div class="flex items-center justify-between lg:justify-center w-4/5 mx-4 pb-8" data-aos="fade-right" data-aos-duration="1000">
                         <img src="Montage_PRAIRIE2.png" class="h-56 lg:mr-8">
                         <div class="w-2/3 max-w-[600px]">
-                            <p class="text-xl md:text-2xl">La Prairie</p>
+                            <p class="text-xl md:text-2xl font-[carrois]">La Prairie</p>
                             <p class="text-md md:text-lg">Bière de type Ale, de fermentation haute, rafraîchissante, fruitée et florale, aux arômes de fruits
                                 rouges.</p>
                             <p class="text-md md:text-lg">IBU : 22</p>
                             <p class="text-md md:text-lg">ABV : 5%</p>
                         </div>
                     </div>
-                    <div class="flex items-center justify-between lg:justify-center w-4/5 pt-8 mx-4">
+                    <div class="w-full flex">
+                        <span class="bg-[#00896b] w-1/4 xl:w-1/5 h-[1px] mx-auto relative top-[50%] left-[5%] sm:left-[8%] md:left-[10%] xl:left-[12%] block" data-aos="fade-right" data-aos-duration="1000"></span>
+                        <img src="beer-green.svg" class="h-4 w-4" data-aos="fade-in" data-aos-duration="1000" data-aos-delay="200">
+                        <span class="bg-[#00896b] w-1/4 xl:w-1/5 h-[1px] mx-auto relative top-[50%] right-[5%] sm:right-[8%] md:right-[10%] xl:right-[12%] block" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="400"></span>
+                    </div>
+                    <div class="flex items-center justify-between lg:justify-center w-4/5 pt-8 mx-4" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="600">
                         <img src="Montage_BALMA2.png" class="h-56 lg:mr-8">
                         <div class="w-2/3 max-w-[600px]">
-                            <p class="text-xl md:text-2xl">Balma</p>
+                            <p class="text-xl md:text-2xl font-[carrois]">Balma</p>
                             <p class="text-md md:text-lg">Bière de type Lager de fermentation basse, rafraîchissante, légère avec des notes épicées, florales et
                                 de fines bulles.</p>
                             <p class="text-md md:text-lg">IBU : 22</p>
@@ -116,71 +154,80 @@
                 </section>
 
                 <section id="points-de-vente" class="flex flex-wrap bg-[#101a1b] py-16 lg:py-24 xl:py-32 justify-center items-around w-screen">
-                    <h2 class="text-4xl uppercase pb-8 md:pb-16 w-full text-white text-center mx-4">Points de vente bouteilles</h2>
-                    <div class=" mx-4">
-                        <div id="baumois" class="bg-white p-4 transition-[max-height] w-[300px] max-h-16 duration-500 ease-in-out">
+                    <div class="pb-8 md:pb-16 w-full mx-4 order-1">
+                        <span class="bg-[#f69033] w-[400px]  h-[5px] mx-auto relative block"></span>
+                        <h2 class="text-4xl uppercase text-white text-center">Points de vente</h2>
+                        <span class="bg-[#f69033] w-[400px]  h-[5px] mx-auto relative block"></span>
+                    </div>
+                    <div class=" mx-4 order-3">
+                        <div id="baumois" class="bg-white p-4 transition-[max-height] w-[320px] sm:w-[350px] max-h-16 duration-500 ease-in-out" data-aos="fade-right" data-aos-delay="300" data-aos-duration="1000">
                             <div class="flex justify-between items-center">
-                                <p class="text-2xl uppercase">Les commerces baumois</p>
-                                <p class="text-2xl">＋</p>
+                                <p class="text-xl sm:text-2xl uppercase font-[carrois] underline decoration-2 decoration-[#f69033] underline-offset-4">Les commerces baumois</p>
+                                <span class="w-[16px] h-[16px] bg-[url(plus.svg)] bg-cover "></span>
                             </div>
                             <ul class="hidden">
-                                <li id="saveur" class="text-xl hover:[text-decoration-color:rgba(16,26,27,1)] [text-decoration:underline_rgba(16,26,27,0)] [transition:text-decoration-color_300ms;] cursor-pointer">Marché aux saveurs</li>
-                                <li id="inter" class="text-xl hover:[text-decoration-color:rgba(16,26,27,1)] [text-decoration:underline_rgba(16,26,27,0)] [transition:text-decoration-color_300ms;] cursor-pointer">Intermarché</li>
-                                <li id="superu" class="text-xl hover:[text-decoration-color:rgba(16,26,27,1)] [text-decoration:underline_rgba(16,26,27,0)] [transition:text-decoration-color_300ms;] cursor-pointer">Super U</li>
-                                <li id="gamm" class="text-xl hover:[text-decoration-color:rgba(16,26,27,1)] [text-decoration:underline_rgba(16,26,27,0)] [transition:text-decoration-color_300ms;] cursor-pointer">Gamm vert</li>
-                                <li id="caps" class="text-xl hover:[text-decoration-color:rgba(16,26,27,1)] [text-decoration:underline_rgba(16,26,27,0)] [transition:text-decoration-color_300ms;] cursor-pointer">Capsule et Bouchon</li>
+                                <li id="saveur" class="text-xl hover:text-[#f69033] [transition:color_300ms;] cursor-pointer">Marché aux saveurs</li>
+                                <li id="inter" class="text-xl hover:text-[#f69033] [transition:color_300ms;] cursor-pointer">Intermarché</li>
+                                <li id="superu" class="text-xl hover:text-[#f69033] [transition:color_300ms;] cursor-pointer">Super U</li>
+                                <li id="gamm" class="text-xl hover:text-[#f69033] [transition:color_300ms;] cursor-pointer">Gamm vert</li>
+                                <li id="caps" class="text-xl hover:text-[#f69033] [transition:color_300ms;] cursor-pointer">Capsule et Bouchon</li>
                             </ul>
                         </div>
-                        <div id="bisontins" class="bg-white p-4 mt-4 transition-[max-height] max-h-16 duration-500 ease-in-out">
+                        <div id="bisontins" class="bg-white p-4 mt-4 transition-[max-height] max-h-16 duration-500 ease-in-out" data-aos="fade-right" data-aos-delay="600" data-aos-duration="1000" data-aos-anchor="#map-vente">
                             <div class="flex justify-between items-center">
-                                <p class="text-2xl uppercase">Les commerces bisontins</p>
-                                <p class="text-2xl">＋</p>
+                                <p class="text-xl sm:text-2xl uppercase font-[carrois] underline decoration-2 decoration-[#f69033] underline-offset-4">Les commerces bisontins</p>
+                                <span class="w-[16px] h-[16px] bg-[url(plus.svg)] bg-cover "></span>
                             </div>
                             <ul class="hidden">
-                                <li id="biocoop" class="text-xl hover:[text-decoration-color:rgba(16,26,27,1)] [text-decoration:underline_rgba(16,26,27,0)] [transition:text-decoration-color_300ms;] cursor-pointer">Biocoop Besançon</li>
-                                <li id="etc" class="text-xl hover:[text-decoration-color:rgba(16,26,27,1)] [text-decoration:underline_rgba(16,26,27,0)] [transition:text-decoration-color_300ms;] cursor-pointer">Bières & Caetera</li>
-                                <li id="eau"class="text-xl hover:[text-decoration-color:rgba(16,26,27,1)] [text-decoration:underline_rgba(16,26,27,0)] [transition:text-decoration-color_300ms;] cursor-pointer">L’eau vive</li>
+                                <li id="biocoop" class="text-xl hover:text-[#f69033] [transition:color_300ms;] cursor-pointer">Biocoop Besançon</li>
+                                <li id="etc" class="text-xl hover:text-[#f69033] [transition:color_300ms;] cursor-pointer">Bières & Caetera</li>
+                                <li id="eau"class="text-xl hover:text-[#f69033] [transition:color_300ms;] cursor-pointer">L’eau vive</li>
                             </ul>
                         </div>
-                        <div id="bisontins" class="bg-white p-4 mt-4">
-                            <p class="text-2xl uppercase">Et ailleurs</p>
+                        <div class="bg-white p-4 mt-4" data-aos="fade-right" data-aos-delay="900" data-aos-duration="1000" data-aos-anchor="#map-vente">
+                            <p class="text-xl sm:text-2xl uppercase font-[carrois] underline decoration-2 decoration-[#f69033] underline-offset-4">Et ailleurs</p>
                             <ul class="">
-                                <li id="cabane" class="text-xl hover:[text-decoration-color:rgba(16,26,27,1)] [text-decoration:underline_rgba(16,26,27,0)] [transition:text-decoration-color_300ms;] cursor-pointer">Cabanes des Grand Lac Bonnal</li>
+                                <li id="cabane" class="text-xl hover:text-[#f69033] [transition:color_300ms;] cursor-pointer">Cabanes des Grand Lac Bonnal</li>
+                            </ul>
+                        </div>
+                        <div id="tireuse" class="bg-white p-4 mt-4 transition-[max-height] w-[320px] sm:w-[350px] max-h-16 duration-500 ease-in-out" data-aos="fade-right" data-aos-delay="1200" data-aos-duration="1000" data-aos-anchor="#map-vente"  data-aos-id="aos-done">
+                            <div class="flex justify-between items-center">
+                                <p class="text-xl sm:text-2xl uppercase font-[carrois] underline decoration-2 decoration-[#00896b] underline-offset-4">Ou à la tireuse</p>
+                                <span class="w-[16px] h-[16px] bg-[url(plus.svg)] bg-cover "></span>
+                            </div>
+                            <ul class="hidden">
+                                <li id="mactom" class="text-xl hover:text-[#00896b] [transition:color_300ms;] cursor-pointer">MacTom à Baume-les-Dames</li>
+                                <li id="chateau" class="text-xl hover:text-[#00896b] [transition:color_300ms;] cursor-pointer">Auberge du château de Vaîte à Champlive</li>
+                                <li id="auberge"class="text-xl hover:text-[#00896b] [transition:color_300ms;] cursor-pointer">A la Bonne Auberge à Clerval</li>
                             </ul>
                         </div>
                     </div>
-                    <div id="map-vente" class="h-[300px] md:h-[392px] w-1/2 min-w-[295px] max-w-[600px] z-0 mt-8 sm:mx-8 md:ml-2 md:mr-0 md:mt-0"></div>
-                    <div class="w-1/2 bg-[url(photovente.png)] bg-center [background-size:600px] h-[600px] w-[400px] hidden"></div>
+                    <div id="map-vente" class="h-[300px] md:h-[472px] w-[295px] sm:w-[350px] lg:w-[450px] z-0 mt-4 mb-4 md:mb-0 sm:mx-8 md:ml-2 md:mr-0 md:mt-0 order-2 md:order-4" data-aos="fade-up" data-aos-duration="1000"></div>
                 </section>
 
-                <section id="tireuse" class="bg-[#101a1b] pb-16 lg:pb-24 xl:pb-32 flex flex-wrap justify-center w-screen">
-                    <h2 class="text-4xl uppercase md:pb-16 w-full text-white text-center mx-4">Tireuse (saisonnier ou annuel)</h2>
-                    <ul class="flex flex-col justify-evenly h-[300px] mx-4 w-[300px]">
-                        <li id="mactom" class="text-white text-xl hover:[text-decoration-color:rgba(255,255,255,1)] [text-decoration:underline_rgba(255,255,255,0)] [transition:text-decoration-color_300ms;] cursor-pointer">MacTom à Baume-les-Dames</li>
-                        <li id="chateau" class="text-white text-xl hover:[text-decoration-color:rgba(255,255,255,1)] [text-decoration:underline_rgba(255,255,255,0)] [transition:text-decoration-color_300ms;] cursor-pointer">Auberge du château de Vaîte à Champlive</li>
-                        <li id="auberge" class="text-white text-xl hover:[text-decoration-color:rgba(255,255,255,1)] [text-decoration:underline_rgba(255,255,255,0)] [transition:text-decoration-color_300ms;] cursor-pointer">A la Bonne Auberge à Clerval</li>
-                    </ul>
-                    <div id="map-tireuse" class="h-[300px] w-1/2 min-w-[300px] max-w-[600px] z-0 sm:mx-8 md:ml-2 md:mr-0"></div>
-                    <div class="w-1/2 bg-[url(neige.jpg)] bg-center [background-size:300px] h-[450px] w-[300px] hidden"></div>
+                <section id="contact" class=" w-screen h-[840px] md:h-[580px] lg:h-[640px] overflow-hidden">
+                    <div class="py-16 lg:py-24 xl:py-32 w-full h-full bg-[url(P1110604.jpg)] bg-cover [background-position:-10rem_1rem;] md:[background-position:0rem_1rem;] xl:[background-position:0rem_-1rem;] 2xl:[background-position:0rem_-5rem;] bg-fixed [filter:blur(8px)_brightness(70%)]"></div>
+                    <div class="relative -top-full flex flex-wrap justify-center mt-16 md:mt-32">
+                        <div class="w-[330px] lg:w-[400px] h-[330px] lg:h-[400px] pb-8 sm:mx-14 md:mx-0 justify-center md:justify-start items-center flex-wrap md:p-0 bg-white text-center" data-aos="flip-right" data-aos-duration="1000">
+                            <h2 class="text-4xl uppercase text-center py-4 lg:py-10">Contact</h2>
+                            <img src="logo2.png" class="h-24 mx-auto">
+                            <p class="text-lg font-[carrois]">13 Ter rue des Vignottes</p>
+                            <p class="text-lg font-[carrois]">25110 Baume-les-Dames</p>
+                            <p class="text-lg font-[carrois]">Tel : 07 57 48 45 38</p>
+                            <a href="mailto:brasserieduquint@gmail.com" class="text-lg font-[carrois] block">brasserieduquint@gmail.com</a>
+                            <a href="https://www.facebook.com/votrepagefacebook" class="text-lg underline font-[carrois] text-blue-600 hover:text-blue-800 visited:text-purple-600">Facebook</a>
+                        </div>
+                        <div id="map-contact" class="h-60 w-[330px] lg:w-[400px] h-[330px] lg:h-[400px] z-0 md:ml-8 mt-12 md:mt-0" data-aos="flip-left" data-aos-duration="1000" data-aos-delay="300"></div>
+                </div>
                 </section>
-
-                <section id="contact" class="pt-16 lg:pt-24 xl:pt-32 flex flex-wrap justify-center items-center w-screen">
-                    <h2 class="text-4xl uppercase pb-8 md:pb-16 w-full text-center">Contact</h2>
-                    <div class="bg-[url(photovente.png)] bg-center [background-size:300px] h-[300px] w-48 hidden lg:block "></div>
-                    <div class="w-full pb-8 mx-4 flex justify-center md:justify-start items-center flex-wrap md:w-[270px] md:h-[200px] md:p-0 lg:w-[220px] lg:ml-20">
-                        <p class="text-xl w-3/5 md:w-auto">Brasseries du Quint et Balma</p>
-                        <p class="text-xl w-3/5 md:w-auto">13 Ter rue des Vignottes</p>
-                        <p class="text-xl w-3/5 md:w-auto">25110 Baume-les-Dames</p>
-                        <p class="text-xl w-3/5 md:w-4/5">Tel : 07 57 48 45 38</p>
-                        <a href="mailto:brasserieduquint@gmail.com" class="text-xl w-3/5">brasserieduquint@gmail.com</a>
-                        <a href="https://www.facebook.com/votrepagefacebook" class="text-xl w-3/5 underline text-blue-600 hover:text-blue-800 visited:text-purple-600">Facebook</a>
-                    </div>
-                    <div id="map-contact" class="h-60 h-[300px] min-w-[300px] md:max-w-[600px] z-0 md:ml-8"></div>
-                </section>
-                <p class="text-xl text-white md:mt-16 lg:mt-24 xl:mt-32 text-center bg-[#101a1b] py-2 w-screen px-4">L'abus d'alcool est dangereux pour la santé. À consommer avec modération.</p>
+                <p class="text-xl text-white text-center bg-[#101a1b] py-2 w-screen px-4">L'abus d'alcool est dangereux pour la santé. À consommer avec modération.</p>
             </div>
         </div>
     </div>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init({once: true});
+    </script>
 </body>
 
 </html>
