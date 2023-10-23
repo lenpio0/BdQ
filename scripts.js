@@ -131,31 +131,31 @@ markerContact.bindPopup("13 Ter Rue des Vignottes");
 
 
 var markerMactom = L.marker([47.3524039 ,6.3554165], {icon: greenIcon}, {zIndexOffset: 1000}).addTo(mapVente);
-markerMactom.bindPopup("MacTom");
+markerMactom.bindPopup("MacTom, 16 Av. du Général Leclerc 25110 Baume-les-Dames");
 var markerChateau = L.marker([47.2910353 ,6.2392109], {icon: greenIcon}).addTo(mapVente);
-markerChateau.bindPopup("Auberge du château de Vaîte");
+markerChateau.bindPopup("Auberge du château de Vaîte, 17 Grande Rue 25360 Champlive");
 var markerAuberge = L.marker([47.3909641 ,6.4903244], {icon: greenIcon}).addTo(mapVente);
-markerAuberge.bindPopup("À la bonne Auberge");
+markerAuberge.bindPopup("À la bonne Auberge, 2 Rue de Besançon 25340 Clerval");
 
 
 var markerSaveur = L.marker([47.3525499 ,6.3539161], {icon: yellowIcon}).addTo(mapVente);
-markerSaveur.bindPopup("Marché aux Saveurs");
+markerSaveur.bindPopup("Marché aux Saveurs, 20 Av. du Général Leclerc 25110 Baume-les-Dames");
 var markerInter = L.marker([47.3475547 ,6.3363675], {icon: yellowIcon}).addTo(mapVente);
-markerInter.bindPopup("Intermarché");
+markerInter.bindPopup("Intermarché, 2 Rue Rosa Luxembourg 25110 Baume-les-Dames");
 var markerU = L.marker([47.3462073,6.3603871], {icon: yellowIcon}).addTo(mapVente);
-markerU.bindPopup("Super U");
+markerU.bindPopup("Super U, 12 Rue de Mi Cour 25112 Baume-les-Dames");
 var markerGamm = L.marker([47.347201,6.3490055], {icon: yellowIcon}).addTo(mapVente);
-markerGamm.bindPopup("Gamm Vert");
+markerGamm.bindPopup("Gamm Vert, 4 Rue du Tennis 25110 Baume-les-Dames");
 var markerCaps= L.marker([47.3512158,6.3583144], {icon: yellowIcon}).addTo(mapVente);
-markerCaps.bindPopup("Capsule et Bouchon");
+markerCaps.bindPopup("Capsule et Bouchon, 6 Espl. du Breuil 25110 Baume-les-Dames");
 var markerBio = L.marker([47.2398905,6.0255278], {icon: yellowIcon}).addTo(mapVente);
-markerBio.bindPopup("Biocoop");
+markerBio.bindPopup("Biocoop, Pl. du Maréchal Leclerc 25000 Besançon");
 var markerEtc = L.marker([47.2391211,6.023497], {icon: yellowIcon}).addTo(mapVente);
-markerEtc.bindPopup("Bières & Caetera");
+markerEtc.bindPopup("Bières & Caetera, 12 Rue Luc Breton 25000 Besançon");
 var markerEau = L.marker([47.2168773,5.9440196], {icon: yellowIcon}).addTo(mapVente);
-markerEau.bindPopup("L'Eau Vive");
+markerEau.bindPopup("L'Eau Vive, 8 Rue Louis Aragon 25000 Besançon");
 var markerLacs = L.marker([47.5093228,6.3546781], {icon: yellowIcon}).addTo(mapVente);
-markerLacs.bindPopup("Cabanes des Grands Lacs");
+markerLacs.bindPopup("Cabanes des Grands Lacs, Forge de Bonnal 70230 Chassey-lès-Montbozon");
 var markers = [];
 
 
